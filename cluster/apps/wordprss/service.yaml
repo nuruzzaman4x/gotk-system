@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  namespace: digicon
+spec:
+  selector:
+    app: wordpress
+  ports:
+    - port: 8081
+      targetPort: 80
+      nodePort: 30881
+  type: NodePort
+

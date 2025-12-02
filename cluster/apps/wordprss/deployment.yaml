@@ -4,7 +4,7 @@ metadata:
   name: wordpress
   namespace: digicon
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: wordpress

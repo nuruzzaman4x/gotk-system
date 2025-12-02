@@ -18,40 +18,12 @@ spec:
           image: wordpress:6.4
           env:
             - name: WORDPRESS_DB_HOST
-              value: mysql.default.svc.cluster.local
+              value: mysql.digicon.svc.cluster.local
             - name: WORDPRESS_DB_USER
-              value: wpuser
+              value: root
+            - name: WORDPRESS_DB_PASSWORD
+              value: rootpass
             - name: WORDPRESS_DB_NAME
               value: appdb
-          envFrom:
-            - secretRef:
-                name: wp-secret
           ports:
             - containerPort: 80
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 10
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 20
-            periodSeconds: 10
-          resources:
-            requests:
-              cpu: 200m
-              memory: 256Mi
-            limits:
-              cpu: 1
-              memory: 512Mi
-          volumeMounts:
-            - name: wp-data
-              mountPath: /var/www/html
-      volumes:
-        - name: wp-data
-          persistentVolumeClaim:
-            claimName: wordpress-pvc
-

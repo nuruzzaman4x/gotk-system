@@ -9,6 +9,4 @@ spec:
   ports:
     - port: 8081
       targetPort: 80
-      nodePort: 30881
   type: NodePort
-

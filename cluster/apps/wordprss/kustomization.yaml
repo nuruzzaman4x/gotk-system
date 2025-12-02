@@ -1,5 +1,4 @@
 resources:
-  - wp-secret.yaml
   - deployment.yaml
   - service.yaml
 
